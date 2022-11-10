@@ -86,9 +86,9 @@
                                     </div>
                                     <div class="col-sm-6" style="margin-top: 18px;">
                                         <input class="form-check-input" type="checkbox" id="fournisseur"> Cohez s'il s'agit d'un fournisseur<br>
-                                        <input type="hidden" name="fournisseur">
+                                        <input type="hidden" value="False" name="fournisseur">
                                         <input class="form-check-input" type="checkbox" id="actif"> Cohez si le client est actif
-                                        <input type="hidden" name="actif">
+                                        <input type="hidden" value="False" name="actif">
                                     </div>
                                 </div>
                                 <h5>Liste des CONTACTS (x contacts enregistres)</h5>

@@ -45,13 +45,37 @@ $(document).ready(function () {
         $('#myModal').modal("show");
         $("#cv_form").attr("action", "/client/editData");
         $("[name=client_id]").val($(this).parent().parent().attr("r_id"));
+        $("[name=clientId_]").val($(this).parent().parent().attr("r_id"));
         $.get(
             "/client/getClientForEdit",
             {
                 id : $(this).parent().parent().attr("r_id")
             }, function(res){
-                console.log(res);
+                var clients = res[0][0];
+                var contacts = res[1][0];
+                $("[name=social_reason]").val(clients.cli_rs);
+                $("[name=siret]").val(clients.cli_siret);
+                $("[name=address]").val(clients.cli_adr);
+                $("[name=tel]").val(clients.cli_tel);
+                $("[name=fax]").val(clients.cli_fax);
+                $("[name=cp]").val(clients.cli_cp);
+                $("[name=ville]").val(clients.cli_vil);
+                if (clients['typ_fnr']=="True") {
+                    $("#fournisseur").attr("checked", true);
+                }
+                if (clients['cli_actif']=="True") {
+                    $("#actif").attr("checked", true);
+                }
+                $("[name=fournisseur]").val(clients['typ_fnr']);
+                $("[name=actif]").val(clients['cli_actif']);
                 
+                $("[name=contact_nom]").val(contacts.con_nom);
+                $("[name=contact_prenom]").val(contacts.con_prenom);
+                $("[name=contact_fonction]").val(contacts.con_fonc);
+                $("[name=contact_email]").val(contacts.con_mail);
+                $("[name=contact_tel_fix]").val(contacts.con_tel);
+                $("[name=contact_tel_port]").val(contacts.con_port);
+                $("[name=contact_fax]").val(contacts.con_fax);
             }, "json"
         );
     });

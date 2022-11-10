@@ -77,4 +77,29 @@ class ClientController extends Controller
         ]);
         return redirect()->back();
     }
+    public function editClient(Request $request)
+    {
+        $input = $request->all();
+        DB::table('cli_fnr')->where('id', $input['client_id'])->update([
+            'cli_rs' => $input['social_reason'],
+            'cli_adr' => $input['address'],
+            'cli_cp' => $input['cp'],
+            'cli_vil' => $input['ville'],
+            'cli_tel' => $input['tel'],
+            'cli_fax' => $input['fax'],
+            'cli_siret' => $input['siret'],
+            'typ_fnr' => $input['fournisseur'],
+            'cli_actif' => $input['actif']
+        ]);
+        DB::table('contacts')->where('cli_id', $input['client_id'])->update([
+            'con_nom' => $input['contact_nom'],
+            'con_prenom' => $input['contact_prenom'],
+            'con_fonc' => $input['contact_fonction'],
+            'con_tel' => $input['contact_tel_fix'],
+            'con_port' => $input['contact_tel_port'],
+            'con_mail' => $input['contact_email'],
+            'con_fax' => $input['contact_fax']
+        ]);
+        return redirect()->back();
+    }
 }
