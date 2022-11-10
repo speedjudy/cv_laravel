@@ -1,0 +1,268 @@
+@font-face {
+    font-family: myFirstFont;
+    src: url(ceracompactpro-black.otf);
+}
+
+html * {
+    font-family: myFirstFont;
+}
+
+body {
+    background-color: #000000;
+}
+
+.top_rows_layer {
+    font-weight: bolder;
+    line-height: 1;
+}
+.rows_layer {
+    font-weight: bolder;
+    line-height: 0.8;
+}
+
+.start {
+    background: white;
+    position: absolute;
+    background-color: #000000;
+    font-weight: 600;
+    padding-top: 14px;
+    padding-bottom: 14px;
+    padding-left: 27px;
+    padding-right: 27px;
+    margin: 113px -10.6rem;
+    border-radius: 12px;
+    z-index: 1;
+    text-align: center;
+    font-size: 51px;
+    line-height: 0.8;
+}
+.table_num {
+    font-size: 70px;
+    float: right;
+}
+.table_num_right {
+    font-size: 70px;
+    float: left;
+}
+.table_order_num {
+    font-weight: 500;
+    line-height: 46px;
+}
+.timing {
+    font-weight: 700;
+}
+
+.time_div {
+    padding-top: 22px;
+}
+
+.first_step {
+    font-size: 29px;
+    font-weight: bolder;
+    line-height: 1;
+}
+
+.second_step {
+    font-size: 34px;
+    font-weight: bolder;
+    line-height: 1;
+}
+
+.first_time {
+    opacity: 0.5;
+}
+
+.second_time {
+    opacity: 0.6;
+}
+
+.third_time {
+    opacity: 0.7;
+}
+
+.fourth_time {
+    opacity: 0.8;
+}
+
+.top-animation {
+    background-color: #ff4d99;
+    animation-name: five_time_example;
+    animation-duration: 14s;
+}
+.push_lists {
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
+.top_layer {
+    padding-top: 8px;
+    padding-bottom: 8px;
+    width: 40rem;
+}
+.top_layer_temp {
+    padding-top: 8px;
+    padding-bottom: 8px;
+    background-color: #ff4d99;
+    width: 40rem;
+    position: absolute;
+    animation-name: left-move;
+    animation-duration: 2s;
+}
+.top_layer_right_temp {
+    padding-top: 8px;
+    padding-bottom: 8px;
+    background-color: #ff4d99;
+    width: 40rem;
+    text-align: right;
+    left: 804px;
+    position: absolute;
+    animation-name: right-move;
+    animation-duration: 2s;
+}
+@keyframes left-move {
+    0% {
+        left: 132px;
+    }
+    100% {
+        left: -1500px;
+    }
+}
+@keyframes right-move {
+    0% {
+        left: 804px;
+    }
+    100% {
+        left: 2300px;
+    }
+}
+.top_layer_right {
+    padding-top: 8px;
+    padding-bottom: 8px;
+    background-color: #ff4d99;
+    width: 40rem;
+    text-align: right;
+}
+@keyframes five_time_example {
+    0% {
+        background-color: #ff4d99;
+    }
+
+    10% {
+        background-color: #00a329;
+    }
+
+    20% {
+        background-color: #ff4d99;
+    }
+
+    30% {
+        background-color: #00a329;
+    }
+
+    40% {
+        background-color: #ff4d99;
+    }
+
+    50% {
+        background-color: #00a329;
+    }
+
+    60% {
+        background-color: #ff4d99;
+    }
+
+    70% {
+        background-color: #00a329;
+    }
+
+    80% {
+        background-color: #ff4d99;
+    }
+
+    90% {
+        background-color: #00a329;
+    }
+
+    100% {
+        background-color: #ff4d99;
+    }
+}
+/* .first_step_div {
+    background-color: #004884;
+}
+.second_step_div {
+    background-color: #009cda;
+}
+.third_step_div {
+    background-color: #004884;
+}
+.fourth_step_div {
+    background-color: #009cda;
+    width: 39%;
+}
+.fourth_step_div_right {
+    background-color: #009cda;
+    width: 39%;
+    text-align: right;
+} */
+.animate_lightblue {
+    background-color: #003E55;
+    animation-name: lightblue-am;
+    animation-duration: 4s;
+}
+@keyframes lightblue-am {
+    from {
+        background-color: #002746;
+        opacity: 0.2;
+    }
+    to {
+        background-color: #003E55;
+        opacity: 1;
+    }
+}
+.animate_blue {
+    background-color: #002746;
+    animation-name: blue-am;
+    animation-duration: 2s;
+}
+@keyframes blue-am {
+    from {
+        background-color: #003E55;
+        opacity: 0.2;
+    }
+    to {
+        background-color: #002746;
+        opacity: 1;
+    }
+}
+
+
+.animate_lightblue_strong {
+    background-color: #005E82;
+    animation-name: lightblue-am_strong;
+    animation-duration: 2s;
+}
+@keyframes lightblue-am_strong {
+    from {
+        background-color: #013B69;
+        opacity: 0.2;
+    }
+    to {
+        background-color: #005E82;
+        opacity: 1;
+    }
+}
+.animate_blue_strong {
+    background-color: #013B69;
+    animation-name: blue-am_strong;
+    animation-duration: 4s;
+}
+@keyframes blue-am_strong {
+    from {
+        background-color: #005E82;
+        opacity: 0.2;
+    }
+    to {
+        background-color: #013B69;
+        opacity: 1;
+    }
+}
