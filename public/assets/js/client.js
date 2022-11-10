@@ -1,4 +1,5 @@
 $(document).ready(function () {
+    var n_id = 0;
     getClientList("True");
     $("#add_indisponible").click(function(){
         if ($(this)[0].checked==true) {
@@ -20,6 +21,40 @@ $(document).ready(function () {
             );
         }
     });
+    $("#fournisseur").click(function(){
+        if ($(this)[0].checked==true) {
+            $("[name=fournisseur]").val("True");
+        } else {
+            $("[name=fournisseur]").val("False");
+        }
+    });
+    $("#actif").click(function(){
+        if ($(this)[0].checked==true) {
+            $("[name=actif]").val("True");
+        } else {
+            $("[name=actif]").val("False");
+        }
+    });
+    $(".btn-close").click(function(){
+        window.location.reload();
+    })
+    $(".close_btn").click(function(){
+        window.location.reload();
+    });
+    $(document).on('click', '#editBtn', function(){
+        $('#myModal').modal("show");
+        $("#cv_form").attr("action", "/client/editData");
+        $("[name=client_id]").val($(this).parent().parent().attr("r_id"));
+        $.get(
+            "/client/getClientForEdit",
+            {
+                id : $(this).parent().parent().attr("r_id")
+            }, function(res){
+                console.log(res);
+                
+            }, "json"
+        );
+    });
     function getClientList(activeFlag) {
         $.get(
             "/client/getList",
@@ -29,18 +64,26 @@ $(document).ready(function () {
             function (res) {
                 var html = "";
                 for (var i = 0; i < res.length; i++) {
-                    html += "<tr r_id='" + res[i]["id"] + "'>";
-                    html += "<td>" + res[i]["id"] + "</td>";
-                    html += "<td>" + res[i]["cli_rs"] + "</td>";
-                    html += "<td>" + res[i]["cli_adr"] + "</td>";
-                    html += "<td>" + res[i]["cli_cp"] + "</td>";
-                    html += "<td>" + res[i]["cli_vil"] + "</td>";
-                    html += "<td>" + res[i]["typ_fnr"] + "</td>";
-                    html += "<td>" + res[i]["cli_fax"] + "</td>";
-                    html += "<td><a href='javascript:void(0);' id='editCV'><i class='fas fa-edit'></i></a> &nbsp;&nbsp; <a href='javascript:void(0);' id=removeBtn><i class='fas fa-trash'></i></a></td>";
-                    html += "</tr>";
-
+                    if (res[i]['cli_actif']==activeFlag) {
+                        html += "<tr r_id='" + res[i]["id"] + "'>";
+                        html += "<td>" + res[i]["id"] + "</td>";
+                        html += "<td>" + res[i]["cli_rs"] + "</td>";
+                        html += "<td>" + res[i]["cli_adr"] + "</td>";
+                        html += "<td>" + res[i]["cli_cp"] + "</td>";
+                        html += "<td>" + res[i]["cli_vil"] + "</td>";
+                        html += "<td>" + res[i]["typ_fnr"] + "</td>";
+                        html += "<td>" + res[i]["cli_fax"] + "</td>";
+                        html += "<td><a href='javascript:void(0);' id='editBtn'><i class='fas fa-edit'></i></a> &nbsp;&nbsp; <a href='javascript:void(0);' id=removeBtn><i class='fas fa-trash'></i></a></td>";
+                        html += "</tr>";
+                    }
+                    if (n_id <= res[i]["id"]) {
+                        n_id = res[i]["id"];
+                    }
                 }
+                setTimeout(function(){
+                    $("#client_id").val(n_id*1+1);
+                    $("[name=clientId_]").val(n_id*1+1);
+                },1500);
                 $("#client_tbody").html(html);
             },
             "json"

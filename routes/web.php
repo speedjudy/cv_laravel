@@ -38,7 +38,11 @@ Route::controller(MainController::class)->group(function () {
 Route::controller(ClientController::class)->group(function () {
     Route::get('/client', 'client');
     Route::get('/client/getList', 'getClient');
+    Route::get('/client/getClientForEdit', 'getClientForEdit');
+    
+    Route::post('/client/saveData', 'saveClient');
     Route::get('/client/removeClient', 'removeClient');
+
     
 });
 Route::controller(PoolController::class)->group(function () {
