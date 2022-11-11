@@ -36,6 +36,15 @@ class InterventionController extends Controller
         echo json_encode([$data, $clifData]);
         exit();
     }
+    public function getDataForEdit(Request $request)
+    {
+        $id = $request->input("id");
+        $data = DB::table('inter')
+            ->where("int_id", '=', $id)
+            ->get();
+        echo json_encode($data);
+        exit();
+    }
     public function getCommercialDetail(Request $request)
     {
         $data = DB::table('cv_list')
@@ -54,20 +63,47 @@ class InterventionController extends Controller
     public function saveData(Request $request)
     {
         $input = $request->all();
-        echo "<pre>";
-        print_r($input);die();
         DB::table('inter')->insert([
-            'miss_id' => $input['mission_id'],
-            'miss_name' => $input['nom_mission'],
-            'miss_clif' => $input['client_final'],
-            'miss_clis' => $input['client_soft'],
-            'miss_contact' => $input['contact_client'],
-            'miss_commercial' => $input['commercial'],
-            'miss_datedeb' => $input['date_de_debut'],//
-            'miss_datefin' => $input['date_de_fin'],
-            'miss_maj' => date("Y-m-d"),
-            'miss_com' => $input['commentaires']
+            'int_id' => $input['intervention_id'],
+            'miss_id' => $input['mission'],
+            'cv_id' => $input['nom_prenom'],
+            'int_statut' => $input['statut'],
+            'int_fnr' => $input['fournisseur'],
+            'int_profil' => $input['profil_intervention'],
+            'int_pua' => $input['pua'],//
+            'int_puv' => $input['puv'],
+            'int_deb' => $input['date_de_debut'],
+            'int_fin' => $input['date_de_fin'],
+            'int_bdc' => $input['ref_bon_de_commande'],
+            'int_fact' => $input['ref_facture'],
+            'int_com' => $input['commentaires'],
+            'int_maj' => date("Y-m-d")
         ]);
         return redirect()->back();
+    }
+    public function editData(Request $request)
+    {
+        $input = $request->all();
+        DB::table('inter')->where("int_id", "=" ,$input['intervention_id'])->update([
+            'miss_id' => $input['mission'],
+            'cv_id' => $input['nom_prenom'],
+            'int_statut' => $input['statut'],
+            'int_fnr' => $input['fournisseur'],
+            'int_profil' => $input['profil_intervention'],
+            'int_pua' => $input['pua'],//
+            'int_puv' => $input['puv'],
+            'int_deb' => $input['date_de_debut'],
+            'int_fin' => $input['date_de_fin'],
+            'int_bdc' => $input['ref_bon_de_commande'],
+            'int_fact' => $input['ref_facture'],
+            'int_com' => $input['commentaires'],
+            'int_maj' => date("Y-m-d")
+        ]);
+        return redirect()->back();
+    }
+    public function remove(Request $request) 
+    {
+        $id = $request->input("id");
+        DB::table('inter')->where('int_id', '=', $id)->delete();
     }
 }

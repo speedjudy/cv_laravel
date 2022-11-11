@@ -25,6 +25,19 @@ $(document).ready(function () {
             "json"
         );
     }
+    $(document).on('click', '#remove', function(){
+        if (confirm("really delete?")) {
+            $.get(
+                "/intervention/remove",
+                {
+                    id : $(this).parent().parent().attr("r_id")
+                }, function(res){
+                    toastr.success("Success.");
+                    getIntervention();
+                }
+            );
+        }
+    });
     function getFournisseur() {
         $.get(
             "/intervention/getFournisseur",
@@ -102,6 +115,12 @@ $(document).ready(function () {
         );
     }
     $(".nom_prenom").change(function(){
+        getDataWhenChange();
+    });
+    $(".mission").change(function(){
+        getDataWhenChange();
+    });
+    function getDataWhenChange() {
         $.get(
             "/intervention/getCommercialDetail",
             {
@@ -112,8 +131,6 @@ $(document).ready(function () {
                 $("#email").text(res[0]['cv_email']);
             },"json"
         );
-    });
-    $(".mission").change(function(){
         $.get(
             "/mission/getMissionByMID",
             {
@@ -126,6 +143,37 @@ $(document).ready(function () {
                 $("#date_debut").text(res[0]['miss_datedeb']);
                 $("#date_fin").text(res[0]['miss_datefin']);
             },"json"
+        );
+    }
+    $(document).on('click', '#edit', function(){
+        $('#myModal').modal("show");
+        $("#cv_form").attr("action", "/intervention/editData");
+        $("[name=intervention_id]").val($(this).parent().parent().attr("r_id"));
+        $.get(
+            "/intervention/getDataForEdit",
+            {
+                id : $(this).parent().parent().attr("r_id")
+            }, function(res){
+                console.log(res);
+                if (res.length>0) {
+                    $("[name=intervention_no_]").val(res[0]['int_id']);
+                    $("[name=derniere_date_]").val(res[0]['int_maj']);
+
+                    $("[name=mission]").val(res[0]['miss_id']);
+                    $("[name=nom_prenom]").val(res[0]['cv_id']);
+                    getDataWhenChange();
+                    $("[name=date_de_debut]").val(res[0]['int_deb']);
+                    $("[name=date_de_fin]").val(res[0]['int_fin']);
+                    $("[name=profil_intervention]").val(res[0]['int_profil']);
+                    $("[name=ref_facture]").val(res[0]['int_fact']);
+                    $("[name=ref_bon_de_commande]").val(res[0]['int_bdc']);
+                    $("[name=commentaires]").val(res[0]['int_com']);
+                    $("[name=statut]").val(res[0]['int_statut']);
+                    $("[name=fournisseur]").val(res[0]['int_fnr']);
+                    $("[name=pua]").val(res[0]['int_pua']);
+                    $("[name=puv]").val(res[0]['int_puv']);
+                }
+            }, "json"
         );
     });
     function getIntervention() {
@@ -154,7 +202,7 @@ $(document).ready(function () {
                         html += "<td>" + data[i]["cli_rs"] + "</td>";
                         html += "<td>" + data[i]["statut_name"] + "</td>";
                         html +=
-                            "<td><a href='javascript:void(0);' id='editMission'><i class='fas fa-edit'></i></a> &nbsp;&nbsp; <a href='javascript:void(0);' id=removeMission><i class='fas fa-trash'></i></a></td>";
+                            "<td><a href='javascript:void(0);' id='edit'><i class='fas fa-edit'></i></a> &nbsp;&nbsp; <a href='javascript:void(0);' id=remove><i class='fas fa-trash'></i></a></td>";
                         html += "</tr>";
                         if (n_id < data[i]["int_id"]) {
                             n_id = data[i]["int_id"];

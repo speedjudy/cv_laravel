@@ -7,6 +7,7 @@ use App\Http\Controllers\ClientController;
 use App\Http\Controllers\DemandController;
 use App\Http\Controllers\MissionController;
 use App\Http\Controllers\InterventionController;
+use App\Http\Controllers\CalendarController;
 
 /*
 |--------------------------------------------------------------------------
@@ -81,5 +82,15 @@ Route::controller(InterventionController::class)->group(function () {
     Route::get('/intervention/getIntervention', 'getIntervention');
     Route::get('/intervention/getCommercialDetail', 'getCommercialDetail');
     Route::get('/intervention/getFournisseur', 'getFournisseur');
+    Route::get('/intervention/remove', 'remove');
+    Route::get('/intervention/getDataForEdit', 'getDataForEdit');
     Route::post('/intervention/saveData', 'saveData');
+    Route::post('/intervention/editData', 'editData');
+});
+Route::controller(CalendarController::class)->group(function () {
+    Route::get('/calendar', 'calendar');
+    Route::get('/calendar/getType', 'getType');
+    Route::get('/calendar/save', 'save');
+    Route::get('/calendar/getData', 'getData');
+    
 });

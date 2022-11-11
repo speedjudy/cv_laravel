@@ -271,7 +271,7 @@
                             </div>
                             <div class="row">
                                 <h5>Liste des INTERVENTIONS</h5>
-                                <button type="button" class="btn btn-primary" style="width:200px;">Calendar</button>
+                                <a href="calendar" target="_blank"><button type="button" class="btn btn-primary" style="width:200px;">Calendar</button></a>
                                 <table class="table table-striped">
                                     <thead>
                                         <tr>
