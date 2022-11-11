@@ -4,6 +4,10 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PoolController;
 use App\Http\Controllers\MainController;
 use App\Http\Controllers\ClientController;
+use App\Http\Controllers\DemandController;
+use App\Http\Controllers\MissionController;
+use App\Http\Controllers\InterventionController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -43,6 +47,39 @@ Route::controller(ClientController::class)->group(function () {
     Route::post('/client/saveData', 'saveClient');
     Route::post('/client/editData', 'editClient');
     Route::get('/client/removeClient', 'removeClient');
+});
+
+Route::controller(DemandController::class)->group(function () {
+    Route::get('/demand', 'demand');
+    Route::get('/demand/getCommercial', 'getCommercial');
+    Route::get('/demand/getDemand', 'getDemand');
+    Route::get('/demand/getContactClient', 'getContactClient');
+    Route::get('/demand/getClientFinal', 'getClientFinal');
+    Route::get('/demand/getListByFilter', 'getListByFilter');
+    Route::get('/demand/getByContactClient', 'getByContactClient');
+    Route::post('/demand/saveData', 'saveData');
+    Route::post('/demand/editData', 'editData');
+    Route::get('/demand/removeDemand', 'removeDemand');
+    Route::get('/demand/getDataForEdit', 'getDataForEdit');
+});
+
+Route::controller(MissionController::class)->group(function () {
+    Route::get('/mission', 'mission');
+    Route::get('/mission/getMission', 'getMission');
+    Route::get('/mission/getMissionByFilter', 'getMissionByFilter');
+    Route::get('/mission/getByClientSoft', 'getByClientSoft');
+    Route::post('/mission/saveData', 'saveData');
+    Route::get('/mission/removeMission', 'removeData');
+    Route::get('/mission/getDataForEdit', 'getDataForEdit');
+    Route::post('/mission/editData', 'editData');
+    Route::get('/mission/getMissionByMID', 'getMissionByMID');
 
     
+});
+Route::controller(InterventionController::class)->group(function () {
+    Route::get('/intervention', 'intervention');
+    Route::get('/intervention/getIntervention', 'getIntervention');
+    Route::get('/intervention/getCommercialDetail', 'getCommercialDetail');
+    Route::get('/intervention/getFournisseur', 'getFournisseur');
+    Route::post('/intervention/saveData', 'saveData');
 });
