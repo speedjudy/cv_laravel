@@ -2,6 +2,9 @@ $(document).ready(function () {
     getCvNom();
     getType();
     getData();
+    setTimeout(function(){
+        $(".nom").val(sessionStorage.getItem("cv_id_calendar"));
+    },1000);
     function getCvNom() {
         $.get(
             "/demand/getCommercial",

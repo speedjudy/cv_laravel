@@ -9,6 +9,11 @@ $(document).ready(function () {
     $("#resetBtn").click(function(){
         window.location.reload();
     });
+    $("#calendar_btn").click(function(){
+        console.log($("[name=cv_id]").val());
+        sessionStorage.setItem("cv_id_calendar", $("[name=cv_id]").val());
+        location.href="calendar";
+    });
     $("#searchCV").click(function(){
         $.get(
             "/cv/getListBySearch",
@@ -42,13 +47,13 @@ $(document).ready(function () {
                 var html = "";
                 for (var i = 0; i < cvDatas.length; i++) {
                     var flag = true;
-                    if (nom && cvDatas[i]["cv_nom"].indexOf(nom) < 0) {
+                    if (nom && cvDatas[i]["cv_nom"].toLowerCase().indexOf(nom.toLowerCase()) < 0) {
                         flag = false;
                     }
-                    if (disponible && cvDatas[i]["cv_dispo"].indexOf(disponible) < 0) {
+                    if (disponible && cvDatas[i]["cv_dispo"].toLowerCase().indexOf(disponible.toLowerCase()) < 0) {
                         flag = false;
                     }
-                    if (prenom && cvDatas[i]["cv_prenom"].indexOf(prenom) < 0) {
+                    if (prenom && cvDatas[i]["cv_prenom"].toLowerCase().indexOf(prenom.toLowerCase()) < 0) {
                         flag = false;
                     }
                     if (pua && pua<=cvDatas[i]["cjm"]) {
@@ -263,6 +268,7 @@ $(document).ready(function () {
                 $("[name=add_statut]").val(cvDatas[0]['id_statut']);
                 $("[name=add_fournisseur]").val(cvDatas[0]['id_fnr']);
                 $("[name=add_permit]").val(cvDatas[0]['permisB']);
+                $("[name=add_commentaires]").val(cvDatas[0]['cv_comment']);
                 if (cvDatas[0]['permisB']=="True") {
                     $("#add_permis").attr("checked", true);
                 }
@@ -497,6 +503,38 @@ $(document).ready(function () {
             "json"
         );
     }
+    function getMissionData() {
+        $.get(
+            "/mission/getMission",
+            {},
+            function (res) {
+                var missdata = res[0];
+                var cliData = res[1];
+                var cli = {};
+                for (var j=0;j<cliData.length;j++) {
+                    cli[cliData[j]['id']] = cliData[j]['cli_rs'];
+                }
+                console.log(res);
+                setTimeout(function(){
+                    var html = "";
+                    for (var i = 0; i < missdata.length; i++) {
+                        html += "<tr r_id='" + missdata[i]["miss_id"] + "'>";
+                        html += "<td>" + missdata[i]["miss_id"] + "</td>";
+                        html += "<td>" + missdata[i]["miss_name"] + "</td>";
+                        html += "<td>" + cli[missdata[i]["miss_clif"]] + "</td>";
+                        html += "<td>" + missdata[i]["miss_datedeb"] + "</td>";
+                        html += "<td>" + missdata[i]["miss_datefin"] + "</td>";
+                        html += "<td>" + cli[missdata[i]["miss_clis"]] + "</td>";
+                        // html += "<td>" + missdata[i]["con_nom"] + "</td>";
+                        // html += "<td>" + missdata[i]["miss_com"] + "</td>";
+                        html += "</tr>";
+                    }
+                    $("#tbody").html(html);
+                },500);
+            },
+            "json"
+        );
+    }
     function getData () {
         getCvList();
         getTags();
@@ -508,5 +546,6 @@ $(document).ready(function () {
         getEnvironments();
         getOutils();
         getLanguagePro();
+        getMissionData();
     }
 });

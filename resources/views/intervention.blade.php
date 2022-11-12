@@ -9,6 +9,7 @@
 <body>
 
     <div class="container">
+        @include('sidebar')
         <div class="row">
             <div class="col-sm-2">
                 <img src="../assets/imgs/A2SEXPERT-tit.png" width=120></img>
@@ -55,7 +56,7 @@
                                         <input type="hidden" class="form-control mb-2 mr-sm-2" name="derniere_date">
                                     </div>
                                 </div>
-                                <h5>MISSION____</h5>
+                                <h5>MISSION</h5>
                                 <div class="row">
                                     <div class="col-sm-6">
                                         <label for="mission" class="mr-sm-2">MISSION*: </label>
@@ -72,7 +73,7 @@
                                         <label class="mr-sm-2">Date fin: <span id="date_fin"></span></label>
                                     </div>
                                 </div>
-                                <h5>INTERVENANT____</h5>
+                                <h5>INTERVENANT</h5>
                                 <div class="row">
                                     <div class="col-sm-6">
                                         <label for="nom_prenom" class="mr-sm-2">Nom prenom*: </label>
@@ -91,13 +92,13 @@
                                         <label class="mr-sm-2">Email: <span id="email"></span></label><br>
                                     </div>
                                 </div>
-                                <h5>DETAILS INTERVENTION____</h5>
+                                <h5>DETAILS INTERVENTION</h5>
                                 <div class="row">
                                     <div class="col-sm-6">
                                         <label for="date_de_debut" class="mr-sm-2">Date de debut*: </label>
-                                        <input type="datetime-local" class="form-control mb-2 mr-sm-2" name="date_de_debut">
+                                        <input type="text" class="form-control mb-2 mr-sm-2" name="date_de_debut">
                                         <label for="date_de_fin" class="mr-sm-2">Date de fin*: </label>
-                                        <input type="datetime-local" class="form-control mb-2 mr-sm-2" name="date_de_fin">
+                                        <input type="text" class="form-control mb-2 mr-sm-2" name="date_de_fin">
                                     </div>
                                     <div class="col-sm-6">
                                         <label for="statut" class="mr-sm-2">Statut*: </label>
@@ -128,7 +129,7 @@
                                 <div class="row">
                                     <div class="col-sm-10">
                                         <label for="commentaires" class="mr-sm-2">Commentaires: </label>
-                                        <input type="text" class="form-control mb-2 mr-sm-2" name="commentaires">
+                                        <textarea class="form-control mb-2 mr-sm-2" name="commentaires"></textarea>
                                     </div>
                                 </div>
                             </div>

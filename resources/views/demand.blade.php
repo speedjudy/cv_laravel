@@ -9,6 +9,7 @@
 <body>
 
     <div class="container">
+        @include('sidebar') 
         <div class="row">
             <div class="col-sm-2">
                 <img src="../assets/imgs/A2SEXPERT-tit.png" width=120></img>
@@ -73,7 +74,8 @@
                                         <div class="row">
                                             <div class="col-sm-4">
                                                 <label for="date_demande" class="mr-sm-2">DATE DEMANDE *</label>
-                                                <input type="datetime-local" class="form-control mb-2 mr-sm-2" name="date_demande">
+                                                <input type="text" placeholder="dd-mm-yyyy" class="form-control mb-2 mr-sm-2" name="date_demande">
+                                                
                                             </div>
                                             <div class="col-sm-4">
                                                 <label for="commercial" class="mr-sm-2">COMMERCIAL*:</label>
@@ -83,7 +85,7 @@
                                         </div>
                                         <div class="row">
                                             <div class="col-sm-12">
-                                                <label for="client_soft" class="mr-sm-2"><b>CLIENT SOFT____</b> </label>
+                                                <label for="client_soft" class="mr-sm-2"><b>CLIENT SOFT</b> </label>
                                                 <select class="select form-control client_soft" name="client_soft">
                                                 </select>
                                             </div>
@@ -117,7 +119,7 @@
                                                 <input type="text" class="form-control mb-2 mr-sm-2" disabled name="tel">
                                             </div>
                                         </div>
-                                        <h5>DETAILS DEMANDE_____</h5>
+                                        <h5>DETAILS DEMANDE</h5>
                                         <div class="row">
                                             <div class="col-sm-6">
                                                 <label for="date_de_debut" class="mr-sm-2">Date de debut: </label>
@@ -146,12 +148,13 @@
                                         <div class="row">
                                             <div class="col-sm-10">
                                                 <label for="commentaires" class="mr-sm-2">Commentaires: </label>
-                                                <input type="text" class="form-control mb-2 mr-sm-2" name="commentaires">
+                                                <textarea class="form-control mb-2 mr-sm-2" name="commentaires">
+                                                </textarea>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-sm-4">
-                                        <h5>PROFIL RECHERCHE _____</h5>
+                                        <h5>PROFIL RECHERCHE </h5>
                                         <label for="nom_profil" class="mr-sm-2">Nom profil (client) * </label>
                                         <input type="text" class="form-control mb-2 mr-sm-2" name="nom_profil">
                                         <div class="row">

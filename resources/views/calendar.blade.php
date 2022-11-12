@@ -17,6 +17,7 @@
 <body>
 
     <div class="container">
+        @include('sidebar')
         <div class="row">
             <div class="col-sm-2">
                 <img src="../assets/imgs/A2SEXPERT-tit.png" width=120></img>

@@ -153,7 +153,8 @@ class MainController extends Controller
             'cjm' => $input['add_pua'],
             'id_xp' => $input['add_experience'],
             'cv_dispo' => $input['add_dateDisponibilite'],
-            'cv_creation' => $input['add_cree']
+            'cv_creation' => $input['add_cree'],
+            'cv_comment' => $input['add_commentaires']
         ]);
         foreach ($input['addProfil'] as $item) {
             DB::table('cv_profils')->insert([
@@ -226,7 +227,8 @@ class MainController extends Controller
             'cjm' => $input['add_pua'],
             'id_xp' => $input['add_experience'],
             'cv_dispo' => $input['add_dateDisponibilite'],
-            'cv_creation' => $input['add_cree']
+            'cv_creation' => $input['add_cree'],
+            'cv_comment' => $input['add_commentaires']
         ]);
         DB::table('cv_clients')->where('id_cv', '=', $input['add_cv_n'])->delete();
         DB::table('cv_envs')->where('id_cv', '=', $input['add_cv_n'])->delete();

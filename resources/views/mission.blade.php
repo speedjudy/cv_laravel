@@ -9,6 +9,7 @@
 <body>
 
     <div class="container">
+        @include('sidebar')
         <div class="row">
             <div class="col-sm-2">
                 <img src="../assets/imgs/A2SEXPERT-tit.png" width=120></img>
@@ -60,7 +61,7 @@
                                         <input type="hidden" class="form-control mb-2 mr-sm-2" name="derniere_date">
                                     </div>
                                 </div>
-                                <h5>CLIENT SOFT____</h5>
+                                <h5>CLIENT SOFT</h5>
                                 <div class="row">
                                     <div class="col-sm-6">
                                         <label for="client_soft" class="mr-sm-2">CLIENT SOFT*: </label>
@@ -92,15 +93,15 @@
                                         </div>
                                     </div>
                                 </div>
-                                <h5>DETAILS MISSION____</h5>
+                                <h5>DETAILS MISSION</h5>
                                 <div class="row">
                                     <div class="col-sm-6">
                                         <label for="nom_mission" class="mr-sm-2">Nom Mission *: </label>
                                         <input type="text" class="form-control mb-2 mr-sm-2" name="nom_mission">
                                         <label for="date_de_debut" class="mr-sm-2">Date de debut*: </label>
-                                        <input type="datetime-local" class="form-control mb-2 mr-sm-2" name="date_de_debut">
+                                        <input type="text" class="form-control mb-2 mr-sm-2" name="date_de_debut">
                                         <label for="date_de_fin" class="mr-sm-2">Date de fin*: </label>
-                                        <input type="datetime-local" class="form-control mb-2 mr-sm-2" name="date_de_fin">
+                                        <input type="text" class="form-control mb-2 mr-sm-2" name="date_de_fin">
                                     </div>
                                     <div class="col-sm-6">
                                         <label for="client_final" class="mr-sm-2">Client Final*: </label>
@@ -114,10 +115,11 @@
                                 <div class="row">
                                     <div class="col-sm-10">
                                         <label for="commentaires" class="mr-sm-2">Commentaires: </label>
-                                        <input type="text" class="form-control mb-2 mr-sm-2" name="commentaires">
+                                        <textarea class="form-control mb-2 mr-sm-2" name="commentaires">
+                                        </textarea>
                                     </div>
                                 </div>
-                                <div class="row">
+                                <!-- <div class="row">
                                     <h5>Liste des INTERVENTIONS</h5>
                                     <table class="table table-striped">
                                         <thead>
@@ -138,7 +140,7 @@
                                             </tr>
                                         </tbody>
                                     </table>
-                                </div>
+                                </div> -->
                             </div>
                             
                             <!-- Modal footer -->
@@ -165,7 +167,7 @@
                         <th>CONTACT</th>
                         <th>Nb INTER</th>
                         <th>Tot JO</th>
-                        <th>Action</th>
+                        <th style="width:100px;">Action</th>
                     </tr>
                 </thead>
                 <tbody id="mission_tbody">

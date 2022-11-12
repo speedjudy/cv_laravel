@@ -9,6 +9,7 @@
 <body>
 
     <div class="container">
+        @include('sidebar')
         <div class="row">
             <div class="col-sm-3">
                 <img src="../assets/imgs/A2SEXPERT-tit.png" width=120></img>
@@ -118,12 +119,12 @@
                                 </div>
                                 <div class="col-sm-2">
                                     <label for="add_cree" class="mr-sm-2">Cree le</label>
-                                    <input type="date" class="form-control mb-2 mr-sm-2" name="add_cree_" value='<?php echo date('Y-m-d');?>' id="add_cree" disabled>
+                                    <input type="text" class="form-control mb-2 mr-sm-2" name="add_cree_" value='<?php echo date('Y-m-d');?>' id="add_cree" disabled>
                                     <input type="hidden" class="form-control mb-2 mr-sm-2" name="add_cree" value='<?php echo date('Y-m-d');?>' id="add_cree">
                                 </div>
                                 <div class="col-sm-2">
                                     <label for="add_derniere" class="mr-sm-2">Derniere mise a jour</label>
-                                    <input type="date" class="form-control mb-2 mr-sm-2" name="add_derniere" id="add_derniere">
+                                    <input type="text" class="form-control mb-2 mr-sm-2" name="add_derniere" id="add_derniere">
                                 </div>
                                 <div class="col-sm-4">
                                     <label for="add_indisponible" class="mr-sm-2">Indisponible</label><br>
@@ -146,7 +147,7 @@
                                 </div>
                                 <div class="col-sm-3">
                                     <label for="add_dateNaiss" class="mr-sm-2">Date Naiss</label><br>
-                                    <input type="date" class="form-control mb-2 mr-sm-2" name="add_dateNaiss" id="add_dateNaiss">
+                                    <input type="text" class="form-control mb-2 mr-sm-2" name="add_dateNaiss" id="add_dateNaiss">
                                 </div>
                             </div>
                             <div class="row">
@@ -258,10 +259,11 @@
                             </div>
                             <div class="row">
                                 <div class="col-sm-6">
-                                    <label for="add_accessCVcomplete" class="mr-sm-2">Acces au CV complet</label>
-                                    <input type="text" class="form-control mb-2 mr-sm-2" name="add_accessCVcomplete" id="add_accessCVcomplete">
+                                    <!-- <label for="add_accessCVcomplete" class="mr-sm-2">Acces au CV complet</label>
+                                    <input type="file" class="form-control mb-2 mr-sm-2" name="add_accessCVcomplete" id="add_accessCVcomplete"> -->
                                     <label for="add_commentaires" class="mr-sm-2">Commentaires</label>
-                                    <input type="text" class="form-control mb-2 mr-sm-2" name="add_commentaires" id="add_commentaires">
+                                    <textarea class="form-control mb-2 mr-sm-2" name="add_commentaires" id="add_commentaires" >
+                                    </textarea>
                                 </div>
                                 <div class="col-sm-6">
                                     <label for="tags" class="mr-sm-2">Tags:</label>
@@ -271,18 +273,17 @@
                             </div>
                             <div class="row">
                                 <h5>Liste des INTERVENTIONS</h5>
-                                <a href="calendar" target="_blank"><button type="button" class="btn btn-primary" style="width:200px;">Calendar</button></a>
+                                <a id="calendar_btn"><button type="button" class="btn btn-primary" style="width:200px;">Calendar</button></a>
                                 <table class="table table-striped">
                                     <thead>
                                         <tr>
-                                            <th>N</th>
+                                            <th>N°</th>
                                             <th>MISSION</th>
                                             <th>Client Soft</th>
                                             <th>Debut</th>
                                             <th>Fin</th>
-                                            <th>Profil</th>
                                             <th>Fournisseur</th>
-                                            <th>Statut</th>
+                                            <!-- <th>Commentaire</th> -->
                                         </tr>
                                     </thead>
                                     <tbody id="tbody">

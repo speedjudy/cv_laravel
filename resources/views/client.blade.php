@@ -9,6 +9,7 @@
 <body>
 
     <div class="container">
+        @include('sidebar')
         <div class="row">
             <div class="col-sm-2">
                 <img src="../assets/imgs/A2SEXPERT-tit.png" width=120></img>
@@ -154,7 +155,7 @@
                         <th>VILLE</th>
                         <th>FNR o/n</th>
                         <th>Nb Contacts</th>
-                        <th>Action</th>
+                        <th style="width:100px;">Action</th>
                     </tr>
                 </thead>
                 <tbody id="client_tbody">
