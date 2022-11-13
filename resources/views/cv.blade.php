@@ -104,7 +104,7 @@
                 </div>
 
                 <!-- Modal body -->
-                <form action="/cv/saveData" id="cv_form" method="post">
+                <form action="/cv/saveData" id="cv_form" method="post" enctype="multipart/form-data">
                     <div class="modal-body" style="overflow-y: scroll;max-height: 500px;">
                             @csrf
                             <input type="hidden" name="cv_id">
@@ -259,8 +259,8 @@
                             </div>
                             <div class="row">
                                 <div class="col-sm-6">
-                                    <!-- <label for="add_accessCVcomplete" class="mr-sm-2">Acces au CV complet</label>
-                                    <input type="file" class="form-control mb-2 mr-sm-2" name="add_accessCVcomplete" id="add_accessCVcomplete"> -->
+                                    <label for="add_accessCVcomplete" class="mr-sm-2">Acces au CV complet</label>
+                                    <input type="file" class="form-control mb-2 mr-sm-2" name="add_accessCVcomplete" id="add_accessCVcomplete">
                                     <label for="add_commentaires" class="mr-sm-2">Commentaires</label>
                                     <textarea class="form-control mb-2 mr-sm-2" name="add_commentaires" id="add_commentaires" >
                                     </textarea>

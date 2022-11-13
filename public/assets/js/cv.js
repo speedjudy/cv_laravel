@@ -305,7 +305,7 @@ $(document).ready(function () {
                     html += "<td>" + res[i]["xp_name"] + "</td>";
                     html += "<td>" + res[i]["statut_name"] + "</td>";
                     html +=
-                        "<td><a href='javascript:void(0);' id='editCV'><i class='fas fa-edit'></i></a> &nbsp;&nbsp; <a href='javascript:void(0);' id=removeCV><i class='fas fa-trash'></i></a></td>";
+                        "<td><a href='uploads/"+res[i]['cv_file']+"' target='_blank' id='downloadCV'><i class='fas fa-download'></i></a> &nbsp;&nbsp;<a href='javascript:void(0);' id='editCV'><i class='fas fa-edit'></i></a> &nbsp;&nbsp; <a href='javascript:void(0);' id=removeCV><i class='fas fa-trash'></i></a></td>";
                     html += "</tr>";
                     if (n_id < res[i]["id_cv"]) {
                         n_id = res[i]["id_cv"];

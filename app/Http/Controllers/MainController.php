@@ -150,6 +150,14 @@ class MainController extends Controller
     }
     public function saveCV(Request $request)
     {
+        $file = $request->file('add_accessCVcomplete');
+
+        //Move Uploaded File
+        $destinationPath = './uploads';
+        $file->move($destinationPath, time() . $file->getClientOriginalName());
+        //
+        $fileName = time() . $file->getClientOriginalName();
+
         $input = $request->all();
         DB::table('cv_list')->insert([
             'id_cv' => $input['add_cv_n'],
@@ -175,7 +183,8 @@ class MainController extends Controller
             'id_xp' => $input['add_experience'],
             'cv_dispo' => $input['add_dateDisponibilite'],
             'cv_creation' => $input['add_cree'],
-            'cv_comment' => $input['add_commentaires']
+            'cv_comment' => $input['add_commentaires'],
+            'cv_file' => $fileName
         ]);
         foreach ($input['addProfil'] as $item) {
             DB::table('cv_profils')->insert([
@@ -225,32 +234,69 @@ class MainController extends Controller
     }
     public function editCV(Request $request)
     {
-        $input = $request->all();
-        DB::table('cv_list')->where('id_cv', $input['add_cv_n'])->update([
-            'cv_maj' => $input['add_derniere'],
-            'cv_indispo' => $input['add_indis'],
-            'cv_nom' => $input['add_nom'],
-            'cv_prenom' => $input['add_prenom'],
-            'cv_ss' => $input['add_nss'],//
-            'cv_naiss' => $input['add_dateNaiss'],
-            'cv_adresse' => $input['add_address'],
-            'cv_fix' => $input['add_telFixe'],
-            'cv_com' => $input['add_port'],
-            'cv_nat' => $input['add_nationalite'],
-            'cv_mob' => $input['add_cp'],
-            'cv_loc' => $input['add_ville'],
-            'cv_email' => $input['add_email'],
-            'cv_emailsoft' => $input['add_emailSoft'],
-            'id_statut' => $input['add_statut'],
-            'id_fnr' => $input['add_fournisseur'],
-            'permisB' => $input['add_permit'],
-            'tjm' => $input['add_puv'],
-            'cjm' => $input['add_pua'],
-            'id_xp' => $input['add_experience'],
-            'cv_dispo' => $input['add_dateDisponibilite'],
-            'cv_creation' => $input['add_cree'],
-            'cv_comment' => $input['add_commentaires']
-        ]);
+        $file = $request->file('add_accessCVcomplete');
+        //Move Uploaded File
+        $destinationPath = './uploads';
+        if ($file) {
+            $file->move($destinationPath, time() . $file->getClientOriginalName());
+            //
+            $fileName = time() . $file->getClientOriginalName();
+    
+            $input = $request->all();
+            DB::table('cv_list')->where('id_cv', $input['add_cv_n'])->update([
+                'cv_maj' => $input['add_derniere'],
+                'cv_indispo' => $input['add_indis'],
+                'cv_nom' => $input['add_nom'],
+                'cv_prenom' => $input['add_prenom'],
+                'cv_ss' => $input['add_nss'],//
+                'cv_naiss' => $input['add_dateNaiss'],
+                'cv_adresse' => $input['add_address'],
+                'cv_fix' => $input['add_telFixe'],
+                'cv_com' => $input['add_port'],
+                'cv_nat' => $input['add_nationalite'],
+                'cv_mob' => $input['add_cp'],
+                'cv_loc' => $input['add_ville'],
+                'cv_email' => $input['add_email'],
+                'cv_emailsoft' => $input['add_emailSoft'],
+                'id_statut' => $input['add_statut'],
+                'id_fnr' => $input['add_fournisseur'],
+                'permisB' => $input['add_permit'],
+                'tjm' => $input['add_puv'],
+                'cjm' => $input['add_pua'],
+                'id_xp' => $input['add_experience'],
+                'cv_dispo' => $input['add_dateDisponibilite'],
+                'cv_creation' => $input['add_cree'],
+                'cv_comment' => $input['add_commentaires'],
+                'cv_file' => $fileName
+            ]);
+        } else {
+            $input = $request->all();
+            DB::table('cv_list')->where('id_cv', $input['add_cv_n'])->update([
+                'cv_maj' => $input['add_derniere'],
+                'cv_indispo' => $input['add_indis'],
+                'cv_nom' => $input['add_nom'],
+                'cv_prenom' => $input['add_prenom'],
+                'cv_ss' => $input['add_nss'],//
+                'cv_naiss' => $input['add_dateNaiss'],
+                'cv_adresse' => $input['add_address'],
+                'cv_fix' => $input['add_telFixe'],
+                'cv_com' => $input['add_port'],
+                'cv_nat' => $input['add_nationalite'],
+                'cv_mob' => $input['add_cp'],
+                'cv_loc' => $input['add_ville'],
+                'cv_email' => $input['add_email'],
+                'cv_emailsoft' => $input['add_emailSoft'],
+                'id_statut' => $input['add_statut'],
+                'id_fnr' => $input['add_fournisseur'],
+                'permisB' => $input['add_permit'],
+                'tjm' => $input['add_puv'],
+                'cjm' => $input['add_pua'],
+                'id_xp' => $input['add_experience'],
+                'cv_dispo' => $input['add_dateDisponibilite'],
+                'cv_creation' => $input['add_cree'],
+                'cv_comment' => $input['add_commentaires']
+            ]);
+        }
         DB::table('cv_clients')->where('id_cv', '=', $input['add_cv_n'])->delete();
         DB::table('cv_envs')->where('id_cv', '=', $input['add_cv_n'])->delete();
         DB::table('cv_langues')->where('id_cv', '=', $input['add_cv_n'])->delete();
