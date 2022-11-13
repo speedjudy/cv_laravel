@@ -20,8 +20,9 @@ use App\Http\Controllers\CalendarController;
 |
 */
 Route::controller(MainController::class)->group(function () {
-    Route::get('/', 'cv');
-    Route::get('/cv', 'cv');
+    Route::get('/', 'signin');
+    Route::get('/cvlist', 'cv');
+    Route::get('/signin/checkuser', 'checkuser');
     
     Route::get('/cv/getList', 'getCVList');
     Route::get('/cv/getListBySearch', 'getCVListBySearch');

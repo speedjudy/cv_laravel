@@ -319,7 +319,7 @@ $(document).ready(function () {
         setTimeout(function(){
             $("#add_cv_n").val(n_id*1+1);
             $("#add_cv_n_real").val(n_id*1+1);
-        },2000);
+        },1000);
     }
 
     function getTags() {
