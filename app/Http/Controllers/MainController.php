@@ -353,6 +353,14 @@ class MainController extends Controller
     public function removeCV(Request $request) 
     {
         $id = $request->input("id");
+
+        $fileD = DB::table('cv_list')->where('id_cv', $id)->first();
+
+        $filenameName = $fileD->cv_file;
+        if (file_exists('./uploads/' . $filenameName)) {
+            unlink('./uploads/' . $filenameName);
+        }
+
         DB::table('cv_list')->where('id_cv', '=', $id)->delete();
         DB::table('cv_clients')->where('id_cv', '=', $id)->delete();
         DB::table('cv_envs')->where('id_cv', '=', $id)->delete();
