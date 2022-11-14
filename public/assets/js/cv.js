@@ -312,10 +312,12 @@ $(document).ready(function () {
                     }
 
                 }
+                $("#cv_counts").text(res.length);
                 $("#cv_tbody").html(html);
             },
             "json"
         );
+        
         setTimeout(function(){
             $("#add_cv_n").val(n_id*1+1);
             $("#add_cv_n_real").val(n_id*1+1);

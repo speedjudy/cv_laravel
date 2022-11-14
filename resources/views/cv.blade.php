@@ -90,7 +90,7 @@
         </div>
         <br />
         
-        <h5>Resultats de votre recherche: <b>10 CV trouve(s)</b></h5>
+        <h5>Resultats de votre recherche: <b><span id="cv_counts">10</span> CV trouve(s)</b></h5>
         <button type="button" class="btn btn-primary" style="width:100%;" data-bs-toggle="modal" data-bs-target="#myModal">Ajouter un nouveau cv</button>
         <!-- The Modal -->
         <div class="modal fade" id="myModal">
